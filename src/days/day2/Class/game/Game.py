@@ -1,49 +1,32 @@
+from src.days.day2.Class.outcome.Outcome import Win, Loss, Tie
 from src.days.day2.Class.hand.Hand import Rock, Paper, Scissor
 
 class Game:
-    WIN, LOSS, TIE = 6, 0, 3
+    rules = {
+        'Rock' : {'Rock': Tie, 'Paper': Win, 'Scissor': Loss },
+        'Paper' : {'Rock': Loss, 'Paper': Tie, 'Scissor': Win },
+        'Scissor' : {'Rock': Win, 'Paper': Loss, 'Scissor': Tie },
+    }
+
+    modifiedRules = {
+        'Rock' : {'Tie': Rock, 'Win': Paper, 'Loss': Scissor },
+        'Paper' : {'Loss': Rock, 'Tie': Paper, 'Win': Scissor },
+        'Scissor' : {'Win': Rock, 'Loss': Paper, 'Tie': Scissor },
+    }
 
     def __init__(self):
         pass
 
     def playGame(self, opponent, me):
-        res = None
-        if isinstance(opponent, Rock):
-            res = self._opponentIsRock(me)
-        elif isinstance(opponent, Paper):
-            res = self._opponentIsPaper(me)
-        else:
-            res = self._opponentIsScissor(me)
-        return res + me.getPoint()
-    
-    def _opponentIsRock(self, me):
-        res = None
-        if isinstance(me, Rock):
-            res = self.TIE
-        elif isinstance(me, Paper):
-            res = self.WIN
-        else:
-            res = self.LOSS
-        return res
+        res = self._applyRules(opponent.getClassName(), me.getClassName())
+        return res.getPoint() + me.getPoint()
 
+    def playModifiedGame(self, opponent, me):
+        res = self._applyModifiedRules(opponent.getClassName(), me.getClassName())
+        return res.getPoint() + me.getPoint()
 
-    def _opponentIsPaper(self, me):
-        res = None
-        if isinstance(me, Rock):
-            res = self.LOSS
-        elif isinstance(me, Paper):
-            res = self.TIE
-        else:
-            res = self.WIN
-        return res
-
-
-    def _opponentIsScissor(self, me):
-        res = None
-        if isinstance(me, Rock):
-            res = self.WIN
-        elif isinstance(me, Paper):
-            res = self.LOSS
-        else:
-            res = self.TIE
-        return res
+    def _applyRules(self, opponent, me):
+        return self.rules[opponent][me]()
+        
+    def _applyModifiedRules(self, opponent, me):
+        return self.modifiedRules[opponent][me]()

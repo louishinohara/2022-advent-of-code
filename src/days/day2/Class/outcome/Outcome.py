@@ -1,13 +1,13 @@
-class Hand:
-    pointKey = {'Rock': 1, 'Paper': 2, 'Scissor': 3}
+class Outcome:
+    pointKey = {'Win': 6, 'Loss': 0, 'Tie': 3}
     def __init__(self, choice):
         self._option = self._setOption(choice)
         
     def _setOption(self, choice):
         keys = {
-            'A': Rock(), 'X': Rock(),
-            'B': Paper(), 'Y': Paper(),
-            'C': Scissor(), 'Z': Scissor(),
+            'X': Loss(),
+            'Y': Tie(),
+            'Z': Win(),
         }
         return keys[choice]
     
@@ -18,16 +18,17 @@ class Hand:
         return self.pointKey[self.getClassName()]
 
     def getClassName(self):
-        return self.__class__.__name__
+        return self.__class__.__name__   
 
-class Rock(Hand):
+
+class Win(Outcome):
     def __init__(self):
         pass
 
-class Paper(Hand):
+class Loss(Outcome):
     def __init__(self):
         pass
 
-class Scissor(Hand):
+class Tie(Outcome):
     def __init__(self):
         pass
