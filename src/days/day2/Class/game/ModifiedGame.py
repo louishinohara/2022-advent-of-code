@@ -3,8 +3,6 @@ from src.days.day2.Class.hand.Hand import Rock, Paper, Scissor
 
 
 class ModifiedGame:
-    WIN, LOSS, TIE = 6, 0, 3
-
     def __init__(self):
         pass
 
