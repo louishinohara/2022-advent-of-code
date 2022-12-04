@@ -1,5 +1,5 @@
 from src.constants import BASEPATH
-from src.helpers.helpers import getPuzzleInput
+from src.helpers.helpers import getPuzzleInput, reduceFunc
 from functools import reduce
 
 
@@ -36,11 +36,6 @@ def scan(data):
         intersection = comparisonAlgorithm(comparisonAlgorithm(a, b), c).pop()
         ans.append(getOrderVal(intersection))
     return ans
-
-
-def reduceFunc(data):
-    return reduce(lambda a, b: a+b, data)
-
 
 def comparisonAlgorithm(a, b):
     return list(set(a).intersection(b))
