@@ -10,4 +10,10 @@ class FileSystem:
         index = 1
         while index <= len(data):
             c = data[index]
+    
+    def parseInput(input):
+        option = input.split('')[0]
+        if option == '$':
             command = Command(c)
+        elif option == 'dir':
+            command = Dir(c)
