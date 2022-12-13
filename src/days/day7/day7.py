@@ -7,3 +7,5 @@ def exec():
     data = getPuzzleInput(currPath)
     fs = FileSystem()
     fs.buildFileSystem(data)
+    res1, res2 = fs.getElligibleDirsToDelete(), fs.getExactDirToDelete()
+    printSolution((res1, res2))
