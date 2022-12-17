@@ -4,6 +4,16 @@ class Command:
     def __init__(self, c) -> None:
         self.command, self.cycle, self.value = self._parseCommand(c)
 
+
+    def decrementCycle(self):
+        self.cycle -= 1
+
+    def isElligible(self):
+        return self.cycle == 0 
+
+    def isNoop(self):
+        return self.command == 'noop'
+
     def _parseCommand(self, c):
         res = c.rstrip().split(' ')
         command, cycle, value = res[self.COMMAND_INDEX], None, None 
@@ -11,17 +21,8 @@ class Command:
         value = int(res[self.VAL_INDEX]) if command == 'addx' else None
         return command, cycle, value
 
-    def isNoop(self):
-        return self.command == 'noop'
-    
     def getCycle(self):
         return self.cycle
-
-    def decrementCycle(self):
-        self.cycle -= 1
-
-    def isElligible(self):
-        return self.cycle == 0 
 
     def getVal(self):
         return self.value
