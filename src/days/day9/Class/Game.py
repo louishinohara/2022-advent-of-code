@@ -10,7 +10,6 @@ class Game:
         x, y = self._decodeCoord(coord)
         self.move(x, y)
         print('------------')
-        # self.showPlot()
 
     # def showPlot(self):
     #     x1, y1 = self.head.getCoord()
@@ -34,18 +33,20 @@ class Game:
 
     def move(self, x, y):
         print("COORDS ARE X:" + str(x) + " Y:" + str(y))
-        print("=== Old ===")
-        print("HEAD: {0}".format(self.head.getCoord()))
-        print("TAIL: {0}".format(self.tail.getCoord()))
-        print("================")
 
         for i in range(abs(x)):
             self.head.updateX(1 * self._checkPositive(x))
             self.tail.updateCoord(self.head)
 
         for j in range(abs(y)): 
+            print(j)
             self.head.updateY(1 * self._checkPositive(y))
             self.tail.updateCoord(self.head)
+
+        print("=== NEW ===")
+        print("HEAD: {0}".format(self.head.getCoord()))
+        print("TAIL: {0}".format(self.tail.getCoord()))
+        print("================")
 
     def moveTail(self, x, y):
         self.tail.updateCoord(self.head)
