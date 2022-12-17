@@ -3,18 +3,23 @@ from src.days.day9.Class.Game import Game
 from src.days.day9.Class.Head import Head
 from src.days.day9.Class.Tail import Tail
 from src.helpers.helpers import getPuzzleInput, printSolution
+from itertools import chain
+
 
 def exec():
-    currPath = BASEPATH + "/day9/input.txt"
+    currPath = BASEPATH + "/day9/input2.txt"
     data = getPuzzleInput(currPath)
-    playGame(data)
-
+    tail = playGame(data)
+    res = getVisited(tail)
+    print(res)
+    
 def playGame(coords):
     head, tail = Head(), Tail()
     game = Game(head, tail)
-    counter = 0
-    for c in coords:
-        game.exec(c)
-        counter += 1
-        if counter == 10:
-            break
+    for c in coords: game.exec(c)
+    return game.getTail()
+
+def getVisited(tail):
+    v = tail.getVisited()
+    vList = list(chain.from_iterable(v))
+    return sum([1 if i > 0 else 0 for i in vList ])

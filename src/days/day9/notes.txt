@@ -1,0 +1,15 @@
+Intitial State
+
+R4
+Initial -> Move 1 -> Move 2 -> Move 3 -> Move 4
+H: (0,0) -> (1,0) -> (2,0) -> (3,0) -> (4,0)
+T: (0,0) -> (0,0) -> (1,0) -> (2,0) -> (3,0)
+
+Analysis. 
+When moving on the same axis, the tail will take on the position of where the head 
+previously was IF the diffence of new head and curr tail is greater than 1 for an axis 
+
+U4
+Initial -> Move 1 -> Move 2 -> Move 3 -> Move 4
+H: (4,0) -> (4,1) -> (4,2) -> (4,3) -> (4,4)
+T: (3,0) -> (3,0) -> (4,1) -> (4,2) -> (4,3)
