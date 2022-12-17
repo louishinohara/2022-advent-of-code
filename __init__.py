@@ -6,6 +6,7 @@ from src.days.day5 import day5
 from src.days.day6 import day6
 from src.days.day7 import day7
 from src.days.day8 import day8
+from src.days.day10 import day10
 
 def main():
     # day1.exec()
@@ -15,6 +16,7 @@ def main():
     # day5.exec()
     # day6.exec()
     # day7.exec()
-    day8.exec()
+    # day8.exec()
+    day10.exec()
 
 main()
